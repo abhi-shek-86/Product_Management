@@ -186,6 +186,8 @@
 }
 
 .modal-content {
+  position: relative;
+  top: 175px;
   width: 90%;
   max-width: 500px;
   padding: 2rem;
