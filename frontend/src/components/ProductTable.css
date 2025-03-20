@@ -1,4 +1,4 @@
-/* ProductTable.css */
+
 :root {
   --primary-orange: #ff8a4c;
   --secondary-orange: #ff6a1f;
@@ -15,7 +15,7 @@
   margin: 0 auto 2rem;
   padding: 2rem;
   border-radius: 16px;
-  background-color: var(--overlay-white);
+  background-color: white;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px var(--shadow-color);
@@ -170,14 +170,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  /* background-color: rgba(0, 0, 0, 0.9); Darker background */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 1000;
-  padding: 1rem;
   animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+  padding: 0; /* Remove padding */
 }
 
 @keyframes fadeIn {
@@ -187,23 +188,27 @@
 
 .modal-content {
   position: relative;
-  top: 175px;
-  width: 90%;
-  max-width: 500px;
+  top: 0; /* Remove top offset */
+  width: 100%; /* Full width */
+  max-width: 100%; /* Full width */
+  height: 100vh; /* Full height */
+  background: white;
   padding: 2rem;
-  animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slideDown 0.3s ease;
+  border-radius: 0; /* Remove border radius */
+  overflow-y: auto;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.75rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 1rem 0;
+  border-bottom: 2px solid #eee;
 }
 
 .modal-header h2 {
@@ -234,7 +239,8 @@
 }
 
 .form-group {
-  margin-bottom: 1.75rem;
+  max-width: 800px;
+  margin: 0 auto 1.75rem;
 }
 
 .form-group label {
@@ -264,10 +270,13 @@
 }
 
 .modal-actions {
+  max-width: 800px;
+  margin: 2.5rem auto 0;
+  padding: 1rem 0;
+  border-top: 2px solid #eee;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 2.5rem;
 }
 
 .cancel-button {
@@ -306,6 +315,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
+
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .product-container {
@@ -330,7 +341,16 @@
   }
   
   .modal-content {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .form-group {
+    padding: 0 1rem;
+  }
+
+  .modal-header,
+  .modal-actions {
+    padding: 1rem;
   }
 }
 
